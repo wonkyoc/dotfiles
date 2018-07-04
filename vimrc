@@ -3,21 +3,20 @@ set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
 "theme
-"Plugin 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 "syntax support
 Plug 'plasticboy/vim-markdown'
 Plug 'derekwyatt/vim-scala'
 Plug 'stephpy/vim-yaml'
 Plug 'lepture/vim-jinja'
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
+"Plug 'vim-ruby/vim-ruby'
+"Plug 'fatih/vim-go'
 Plug 'othree/html5.vim'
 "productivity
 Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
-Plug 'tpope/vim-rails'
+"Plug 'tpope/vim-rails'
 Plug 'Blackrush/vim-gocode'
 Plug 'rhysd/committia.vim'
 Plug 'junegunn/fzf'
@@ -45,7 +44,7 @@ autocmd BufWinEnter * 2 match HardTab /\t\+/
 "Use mouse.
 set mouse=a
 
-"I dislike CRLF.
+"I don't like CRLF.
 set fileformat=unix
 
 "Make backspace works like most other applications.
@@ -58,7 +57,8 @@ set modeline
 set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp949,korea,iso-2022-kr
 
 "These languages have their own tab/indent settings.
-au FileType cpp        setl ts=2 sw=2 sts=2
+au FileType c          setl ts=4 sw=4 sts=4
+"au FileType cpp        setl ts=2 sw=2 sts=2
 au FileType javascript setl ts=2 sw=2 sts=2
 au FileType ruby       setl ts=2 sw=2 sts=2
 au FileType xml        setl ts=2 sw=2 sts=2
@@ -85,18 +85,6 @@ au! BufRead,BufNewFile *rc setfiletype conf
 nmap <leader>f :FZF<CR>
 nmap <leader>/ :Lines<CR>
 nmap <leader>g :GFiles?<CR>
-
-"vim-go specific
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-au FileType go nmap <leader>r  <Plug>(go-run)
-au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>n  <Plug>(go-referrers)
 
 "English spelling checker.
 setlocal spelllang=en_us
