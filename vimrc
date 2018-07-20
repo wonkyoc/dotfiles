@@ -97,3 +97,6 @@ autocmd BufWinEnter * match Error /\%>80v.\+\|\s\+$\|^\s*\n\+\%$/
 "Theme configuration
 let g:seoul256_background = 236
 colo seoul256
+
+"neovim configuration
+let g:python3_host_prog = '/usr/local/bin/python3'
