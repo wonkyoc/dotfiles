@@ -114,6 +114,17 @@ colo OceanicNext
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let g:airline_theme='oceanicnext'
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+if has('gui_running')
+    set background=light
+endif
+
 "Kernel Convention
 let g:linuxsty_patterns = [ "/usr/src/", "/linux", "~/git/linux" ]
 
