@@ -3,6 +3,7 @@ set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
 "theme
+"test
 Plug 'mhartington/oceanic-next'
 "syntax support
 Plug 'plasticboy/vim-markdown'
