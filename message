@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Have to know
+# 1. tput
+# 2. $@ parameter
+# 3. 
+
+e_warning() {
+    printf "$(tput setaf 136)! %s$(tput sgr0)\n" "$@"
+}
+
+e_success() {
+    printf "$(tput setaf 64)✓ %s$(tput sgr0)\n" "$@"
+}
+
+seek_confirmation() {
+    printf "\n"
+    e_warning "$@"
+    read -p "Continue? (y/n) " -n 1
+    printf "\n"
+}
+
+is_confirmed() {
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+        return 0
+    fi
+    return 1
+}
