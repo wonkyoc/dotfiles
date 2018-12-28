@@ -4,6 +4,7 @@
 
 # List dir contents aliases
 # ref: http://ss64.com/osx/ls.html
+alias ls="ls -G"
 # Long form no user group, color
 alias l="ls -oG"
 # Order by last modified, long form no user group, color
