@@ -74,6 +74,7 @@ set_prompts() {
     local reset=""
     local white=""
     local yellow=""
+    local violet=""
 
     local hostStyle=""
     local userStyle=""
@@ -118,14 +119,14 @@ set_prompts() {
     if [[ "$USER" == "root" ]]; then
         userStyle="\[$bold$red\]"
     else
-        userStyle="\[$orange\]"
+        userStyle="$orange"
     fi
 
     # connected via ssh
     if [[ "$SSH_TTY" ]]; then
         hostStyle="\[$bold$red\]"
     else
-        hostStyle="\[$yellow\]"
+        hostStyle="$yellow"
     fi
 
     # set the terminal title to the current working directory
