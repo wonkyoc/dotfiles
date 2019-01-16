@@ -124,7 +124,7 @@ set_prompts() {
 
     # connected via ssh
     if [[ "$SSH_TTY" ]]; then
-        hostStyle="\[$red\]"
+        hostStyle="$red"
     else
         hostStyle="$yellow"
     fi

@@ -26,6 +26,7 @@ copy_files() {
     link "gitconfig" ".gitconfig"
     link "gitignore_global" ".gitignore"
     link "vimrc" ".vimrc"
+    link "tmux.conf" ".tmux.conf"
     e_success "Dotfiles update complete!"
 }
 
