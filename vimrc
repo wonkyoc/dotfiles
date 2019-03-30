@@ -7,18 +7,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhartington/oceanic-next'
 "syntax support
 Plug 'plasticboy/vim-markdown'
-Plug 'derekwyatt/vim-scala'
 Plug 'stephpy/vim-yaml'
-Plug 'lepture/vim-jinja'
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
 Plug 'vivien/vim-linux-coding-style'
 "productivity
 Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
-Plug 'tpope/vim-rails'
-Plug 'Blackrush/vim-gocode'
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'rhysd/committia.vim'
 Plug 'junegunn/fzf'
@@ -88,18 +82,6 @@ nmap <leader>/ :Lines<CR>
 "ctags
 nmap <leader>s :ts 
 
-"vim-go specific
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-au FileType go nmap <leader>r  <Plug>(go-run)
-au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>n  <Plug>(go-referrers)
-
 "English spelling checker.
 setlocal spelllang=en_us
 
@@ -119,7 +101,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let g:airline_theme='oceanicnext'
 
 if (has("termguicolors"))
- set termguicolors
+    set termguicolors
 endif
 
 if has('gui_running')
