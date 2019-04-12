@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
 "theme
-Plug 'whatyouhide/vim-gotham'
+Plug 'NLKNguyen/papercolor-theme'
 "syntax support
 Plug 'plasticboy/vim-markdown'
 Plug 'vivien/vim-linux-coding-style'
@@ -89,15 +89,13 @@ highlight ColorColumn cterm=underline ctermbg=none
 autocmd BufWinEnter * match Error /\%>80v.\+\|\s\+$\|^\s*\n\+\%$/
 
 "Theme
-colorscheme gotham
+colorscheme PaperColor
 
 if (has("termguicolors"))
     set termguicolors
 endif
 
-if has('gui_running')
-    set background=light
-endif
+set background=dark
 
 "Kernel Convention
 let g:linuxsty_patterns = [ "/usr/src/", "/linux", "~/git/linux" ]
