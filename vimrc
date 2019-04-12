@@ -3,22 +3,14 @@ set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
 "theme
-"test
-Plug 'mhartington/oceanic-next'
+Plug 'whatyouhide/vim-gotham'
 "syntax support
 Plug 'plasticboy/vim-markdown'
-Plug 'derekwyatt/vim-scala'
-Plug 'stephpy/vim-yaml'
-Plug 'lepture/vim-jinja'
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
 Plug 'vivien/vim-linux-coding-style'
 "productivity
 Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
-Plug 'tpope/vim-rails'
-Plug 'Blackrush/vim-gocode'
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'rhysd/committia.vim'
 Plug 'junegunn/fzf'
@@ -109,14 +101,7 @@ highlight ColorColumn cterm=underline ctermbg=none
 autocmd BufWinEnter * match Error /\%>80v.\+\|\s\+$\|^\s*\n\+\%$/
 
 "Theme
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colo OceanicNext
-hi Normal ctermbg=NONE guibg=NONE
-hi NonText ctermbg=NONE guibg=NONE
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let g:airline_theme='oceanicnext'
+colorscheme gotham
 
 if (has("termguicolors"))
  set termguicolors

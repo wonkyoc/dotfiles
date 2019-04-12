@@ -28,4 +28,3 @@ fi
 
 # Open file in exisiting MacVim window
 alias mvim="open -a MacVim"
-alias vim="nvim"
