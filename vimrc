@@ -80,18 +80,6 @@ nmap <leader>/ :Lines<CR>
 "ctags
 nmap <leader>s :ts 
 
-"vim-go specific
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-au FileType go nmap <leader>r  <Plug>(go-run)
-au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>n  <Plug>(go-referrers)
-
 "English spelling checker.
 setlocal spelllang=en_us
 
@@ -104,7 +92,7 @@ autocmd BufWinEnter * match Error /\%>80v.\+\|\s\+$\|^\s*\n\+\%$/
 colorscheme gotham
 
 if (has("termguicolors"))
- set termguicolors
+    set termguicolors
 endif
 
 if has('gui_running')
