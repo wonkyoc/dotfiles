@@ -1,3 +1,4 @@
+" No compatible with vi
 set nocompatible
 "Plug
 filetype off
@@ -16,6 +17,8 @@ Plug 'rhysd/committia.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'bling/vim-airline'
+" vim latex
+Plug 'lervag/vimtex'
 call plug#end()
 filetype plugin indent on
 
@@ -23,7 +26,7 @@ filetype plugin indent on
 syntax on
 
 "Line numbers on left
-set nu
+set number
 
 "Softtab -- use spaces instead tabs.
 set expandtab
