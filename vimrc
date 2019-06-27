@@ -34,6 +34,8 @@ set tabstop=4 shiftwidth=4 sts=4
 set autoindent
 set smartindent
 set cindent
+set hlsearch
+nmap <leader><Space> :nohls<CR>
 highlight HardTab cterm=underline
 autocmd BufWinEnter * 2 match HardTab /\t\+/
 
@@ -93,6 +95,14 @@ autocmd BufWinEnter * match Error /\%>80v.\+\|\s\+$\|^\s*\n\+\%$/
 
 "Theme
 colorscheme PaperColor
+"Theme config
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
 
 if (has("termguicolors"))
     set termguicolors
@@ -101,7 +111,8 @@ endif
 set background=dark
 
 "Kernel Convention
-let g:linuxsty_patterns = [ "/usr/src/", "/linux", "~/git/linux" ]
+let g:linuxsty_patterns = [ "/usr/src/", "/linux"]
 
 "neovim configuration"
 let g:python3_host_prog = '/usr/bin/python3'
+
