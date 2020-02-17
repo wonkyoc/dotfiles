@@ -114,5 +114,20 @@ set background=dark
 let g:linuxsty_patterns = [ "/usr/src/", "/linux"]
 
 "neovim configuration"
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = "/usr/bin/python3"
 
+function SetTags()
+    let curdir = getcwd()
+
+    while !filereadable("tags") && getcwd() != "/"
+        cd ..
+    endwhile
+
+    if filereadable("tags")
+        execute "set tags=" . getcwd() . "/tags"
+    endif
+
+    execute "cd " . curdir
+endfunction
+call SetTags()
+"source ~/.vim/plugin/cscope_maps.vim

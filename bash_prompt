@@ -117,9 +117,11 @@ set_prompts() {
 
     # logged in as root
     if [[ "$USER" == "root" ]]; then
-        userStyle="\[$bold$red\]"
+        userStyle="$bold$red"
+        symbol="#"
     else
         userStyle="$orange"
+        symbol="$"
     fi
 
     # connected via ssh
@@ -137,9 +139,9 @@ set_prompts() {
     PS1+="\[${hostStyle}\]\h"; # host
     PS1+="\[${white}\] in ";
     PS1+="\[$green\]\w" # working directory
-    PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")"; # git repository details
+#    PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")"; # git repository details
     PS1+="\n"
-    PS1+="\[$reset$white\]\$ \[$reset\]" # $ (and reset color)
+    PS1+="\[$reset$white\]${symbol} \[$reset\]" # $ (and reset color)
 
     export PS1
 }
