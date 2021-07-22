@@ -1,78 +1,108 @@
-" No compatible with vi
-set nocompatible
-"Plug
-filetype off
+set nocompatible        " No vi compatible
+syntax on               " enable syntax processing
+
+" Vim-Plug
+" automatic installation
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
-"theme
-Plug 'NLKNguyen/papercolor-theme'
-"syntax support
+" Colorscheme
+" syntax support
+Plug 'dense-analysis/ale'
 Plug 'plasticboy/vim-markdown'
-Plug 'vivien/vim-linux-coding-style'
-"productivity
-Plug 'w0rp/ale'
-"Plug 'davidhalter/jedi-vim'
-Plug 'nvie/vim-flake8'
-"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'rhysd/committia.vim'
+
+" productivity
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'bling/vim-airline'
-" vim latex
-Plug 'lervag/vimtex'
+
+" Cleanup?
+"Plug 'bling/vim-airline'
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'rhysd/committia.vim'
+
+" Colorscheme
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'sjl/badwolf'
+Plug 'morhetz/gruvbox'
 call plug#end()
-filetype plugin indent on
 
-"Syntax highlighting.
-syntax on
 
-"Line numbers on left
-set number
+" Colorscheme
+if has('gui_running')
+    colorscheme gruvbox
+elseif &t_Co < 256
+    colorscheme default
+else
+    set termguicolors
+    set background=dark
+    set t_Co=256
+    colorscheme gruvbox
+endif
 
-"Set relative numbers on left
-set relativenumber
 
-"Softtab -- use spaces instead tabs.
+" UI Config
+set number              " line numbering
+set relativenumber      " show relative numbering
+set showcmd             " show command in bottom bar
+"set cursorline          " highlight current line
+filetype indent on      " load filetype-specific indent files
+filetype plugin on      " load filetype specific plugin files
+set wildmenu            " visual autocomplete for command menu
+set showmatch           " highlight matching [{()}]
+set laststatus=2        " Show the status line at the bottom
+set mouse+=a            " A necessary evil, mouse support
+set noerrorbells visualbell t_vb=    "Disable annoying error noises
+set splitbelow          " Open new vertical split bottom
+set splitright          " Open new horizontal splits right
+set linebreak           " Have lines wrap instead of continue off-screen
+set scrolloff=12        " Keep cursor in approximately the middle of the screen
+set updatetime=100      " Some plugins require fast updatetime
+set ttyfast             " Improve redrawing
+
+" Spaces & Tabs
 set expandtab
-set tabstop=4 shiftwidth=4 sts=4
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" Indentation
 set autoindent
 set smartindent
 set cindent
-set hlsearch
-nmap <leader><Space> :nohls<CR>
+
+" Searching
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+set ignorecase          " Ignore case in searches by default
+set smartcase           " But make it case sensitive if an uppercase is entered
+" turn off search highlight
+vnoremap <C-h> :nohlsearch<cr>
+nnoremap <C-h> :nohlsearch<cr>
+
+
+" Misc.
+" See http://vimregex.com/ for regex
 highlight HardTab cterm=underline
 autocmd BufWinEnter * 2 match HardTab /\t\+/
-
-"Use mouse.
-set mouse=a
-
-"I dislike CRLF.
-set fileformat=unix
-
-"Make backspace works like most other applications.
-set backspace=2
-
-"Detect modeline hints.
-set modeline
-
-"Prefer UTF-8.
+" Keep 80 columns and dense lines.
+set colorcolumn=88
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+set fileformat=unix     " only LF
+set backspace=2         " Make backspace works like most other applications.
+set modeline            " Detect modeline hints.
 set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp949,korea,iso-2022-kr
 
 "These languages have their own tab/indent settings.
-au FileType c          setl ts=4 sw=4 sts=4
-au FileType cpp        setl ts=2 sw=2 sts=2
-au FileType javascript setl ts=2 sw=2 sts=2
-"au FileType ruby       setl ts=2 sw=2 sts=2
-"au FileType xml        setl ts=2 sw=2 sts=2
-au FileType yaml       setl ts=4 sw=4 sts=4
-"au FileType html       setl ts=2 sw=2 sts=2
-"au FileType htmldjango setl ts=2 sw=2 sts=2
-"au FileType lua        setl ts=2 sw=2 sts=2
-"au FileType haml       setl ts=2 sw=2 sts=2
-"au FileType css        setl ts=2 sw=2 sts=2
-"au FileType sass       setl ts=2 sw=2 sts=2
-"au FileType less       setl ts=2 sw=2 sts=2
-au Filetype rst        setl ts=3 sw=3 sts=3
-au FileType make       setl ts=4 sw=4 sts=4 noet
+"au FileType c          setl ts=4 sw=4 sts=4
+"au FileType cpp        setl ts=2 sw=2 sts=2
+"au FileType javascript setl ts=2 sw=2 sts=2
+"au FileType yaml       setl ts=4 sw=4 sts=4
+"au Filetype rst        setl ts=3 sw=3 sts=3
+"au FileType make       setl ts=4 sw=4 sts=4 noet
 
 "Some additional syntax highlighters.
 "au! BufRead,BufNewFile *.wsgi setfiletype python
@@ -81,56 +111,10 @@ au FileType make       setl ts=4 sw=4 sts=4 noet
 "au! BufRead,BufNewFile *.less setfiletype less
 "au! BufRead,BufNewFile *rc setfiletype conf
 
-"FZF
+" Plugin: FZF
 nmap <leader>f :FZF<CR>
 nmap <leader>/ :Lines<CR>
 
-"ctags
-nmap <leader>s :ts 
-
-"English spelling checker.
-setlocal spelllang=en_us
-
-"Keep 80 columns and dense lines.
-"set colorcolumn=81
-highlight ColorColumn cterm=underline ctermbg=none
-autocmd BufWinEnter * match Error /\%>80v.\+\|\s\+$\|^\s*\n\+\%$/
-
-"Theme
-colorscheme PaperColor
-"Theme config
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
-
-if (has("termguicolors"))
-    set termguicolors
-endif
-
-set background=dark
-
-"Kernel Convention
-let g:linuxsty_patterns = [ "/usr/src/", "/linux"]
-
-"neovim configuration"
-let g:python3_host_prog = "/usr/bin/python3"
-
-function SetTags()
-    let curdir = getcwd()
-
-    while !filereadable("tags") && getcwd() != "/"
-        cd ..
-    endwhile
-
-    if filereadable("tags")
-        execute "set tags=" . getcwd() . "/tags"
-    endif
-
-    execute "cd " . curdir
-endfunction
-call SetTags()
-"source ~/.vim/plugin/cscope_maps.vim
+" Useful vimrc link
+" https://github.com/anishathalye/dotfiles/blob/master/vimrc
+" https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
