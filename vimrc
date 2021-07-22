@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 " syntax support
 Plug 'dense-analysis/ale'
 Plug 'plasticboy/vim-markdown'
+Plug 'stephpy/vim-yaml'                " YAML support
 
 " productivity
 Plug 'junegunn/fzf'

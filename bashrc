@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-[ -n "$PS1" ] && source "${HOME}/.bash_profile"
+source ~/.bash/bash_prompt
+source ~/.bash/bash_exports
+source ~/.bash/bash_aliases

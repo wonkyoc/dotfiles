@@ -4,12 +4,16 @@
 
 - clean: ['~']
 
+
 - link:
     ~/.tmux.conf:
     ~/.vimrc:
     ~/.zshrc:
     ~/.vim:
     ~/.gitconfig:
+    ~/.bash_profile:
+    ~/.bashrc:
+    ~/.bash:
 
 
 - create:
