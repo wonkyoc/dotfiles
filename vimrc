@@ -15,13 +15,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'                " YAML support
+"Plug 'ycm-core/YouCompleteMe' later
 
 " productivity
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Cleanup?
-"Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 "Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'rhysd/committia.vim'
 
@@ -35,6 +36,7 @@ call plug#end()
 " Colorscheme
 if has('gui_running')
     colorscheme gruvbox
+    set background=light
 elseif &t_Co < 256
     colorscheme default
 else

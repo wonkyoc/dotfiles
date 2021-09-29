@@ -18,11 +18,11 @@ link() {
 }
 
 copy_files() {
-    link "bashrc" ".bashrc"
-    link "bash_profile" ".bash_profile"
-    link "bash_prompt" ".bash_prompt"
-    link "bash_exports" ".bash_exports"
-    link "bash_aliases" ".bash_aliases"
+    #link "bashrc" ".bashrc"
+    #link "bash_profile" ".bash_profile"
+    #link "bash_prompt" ".bash_prompt"
+    #link "bash_exports" ".bash_exports"
+    #link "bash_aliases" ".bash_aliases"
     link "gitconfig" ".gitconfig"
     link "gitignore_global" ".gitignore"
     link "vimrc" ".vimrc"
