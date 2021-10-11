@@ -39,10 +39,9 @@ brew install gnupg
 
 # Install more recent versions of some OSX tools.
 brew install vim
-brew install neovim
 brew install grep
 brew install openssh
-brew install screen
+# brew install screen
 
 # Remove outdated versions from the cellar.
 brew cleanup

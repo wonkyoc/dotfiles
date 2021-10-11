@@ -1,4 +1,8 @@
 
+## History file configuration
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+[ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
+[ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
 
 # * Prompt
 #https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
