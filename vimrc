@@ -35,6 +35,7 @@ call plug#end()
 " Colorscheme
 if has('gui_running')
     colorscheme gruvbox
+    set background=light
 elseif &t_Co < 256
     colorscheme default
 else
@@ -65,6 +66,10 @@ set updatetime=100      " Some plugins require fast updatetime
 set ttyfast             " Improve redrawing
 
 " Spaces & Tabs
+"https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
+"https://vim.fandom.com/wiki/Highlight_unwanted_spaces
+set list
+set listchars=tab:␉·
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -87,8 +92,9 @@ nnoremap <C-h> :nohlsearch<cr>
 
 " Misc.
 " See http://vimregex.com/ for regex
-highlight HardTab cterm=underline
-autocmd BufWinEnter * 2 match HardTab /\t\+/
+"highlight HardTab cterm=underline
+"set lcs=tab:├─
+"autocmd BufWinEnter * 2 match HardTab /\t\+/
 " Keep 80 columns and dense lines.
 set colorcolumn=88
 highlight ColorColumn ctermbg=0 guibg=lightgrey
