@@ -30,6 +30,10 @@ Plug 'rhysd/committia.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
+
+" Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 
@@ -120,8 +124,8 @@ set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp949,korea,iso-2022-kr
 "au! BufRead,BufNewFile *rc setfiletype conf
 
 " Plugin: FZF
-nmap <leader>f :FZF<CR>
-nmap <leader>/ :Lines<CR>
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>/ :Lines<CR>
 
 " Useful vimrc link
 " https://github.com/anishathalye/dotfiles/blob/master/vimrc
