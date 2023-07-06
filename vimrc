@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 " syntax support
 Plug 'dense-analysis/ale'
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'                " YAML support
 "Plug 'ycm-core/YouCompleteMe' later
 
@@ -32,7 +32,7 @@ Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
 
 " Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
