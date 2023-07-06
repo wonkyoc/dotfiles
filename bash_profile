@@ -13,21 +13,11 @@
 #    fi
 #done;
 
+export TERM=xterm-256color
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/wonkyoc/opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/wonkyoc/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/wonkyoc/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/wonkyoc/opt/anaconda3/bin:$PATH"
-    fi
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 source ~/.bashrc
 

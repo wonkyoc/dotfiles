@@ -31,6 +31,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
 
+" Autocomplete
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
@@ -70,6 +71,10 @@ set updatetime=100      " Some plugins require fast updatetime
 set ttyfast             " Improve redrawing
 
 " Spaces & Tabs
+"https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
+"https://vim.fandom.com/wiki/Highlight_unwanted_spaces
+set list
+set listchars=tab:␉·
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -92,8 +97,9 @@ nnoremap <C-h> :nohlsearch<cr>
 
 " Misc.
 " See http://vimregex.com/ for regex
-highlight HardTab cterm=underline
-autocmd BufWinEnter * 2 match HardTab /\t\+/
+"highlight HardTab cterm=underline
+"set lcs=tab:├─
+"autocmd BufWinEnter * 2 match HardTab /\t\+/
 " Keep 80 columns and dense lines.
 set colorcolumn=88
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -118,8 +124,8 @@ set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp949,korea,iso-2022-kr
 "au! BufRead,BufNewFile *rc setfiletype conf
 
 " Plugin: FZF
-nmap <leader>f :FZF<CR>
-nmap <leader>/ :Lines<CR>
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>/ :Lines<CR>
 
 " Useful vimrc link
 " https://github.com/anishathalye/dotfiles/blob/master/vimrc
