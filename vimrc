@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 " syntax support
 Plug 'dense-analysis/ale'
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'                " YAML support
 "Plug 'ycm-core/YouCompleteMe' later
 
@@ -30,6 +30,9 @@ Plug 'rhysd/committia.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
+
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 
@@ -73,9 +76,9 @@ set shiftwidth=4
 set softtabstop=4
 
 " Indentation
-set autoindent
-set smartindent
-set cindent
+"set autoindent
+"set smartindent
+"set cindent
 
 " Searching
 set incsearch           " search as characters are entered
