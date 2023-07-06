@@ -51,6 +51,5 @@ unset __conda_setup
 
 
 export PATH="$HOME/.poetry/bin:$PATH"
-export OPENAI_API_KEY="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"
 
 alias ls='ls --color=auto -lh'
