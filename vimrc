@@ -30,6 +30,7 @@ Plug 'rhysd/committia.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
+Plug 'tinted-theming/base16-vim'
 
 " Autocomplete
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -39,8 +40,9 @@ call plug#end()
 
 " Colorscheme
 if has('gui_running')
-    colorscheme gruvbox
-    set background=light
+    let base16_colorspace=256
+    colorscheme base16-da-one-white
+    "set background=dark
 elseif &t_Co < 256
     colorscheme default
 else
