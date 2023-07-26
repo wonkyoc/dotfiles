@@ -24,7 +24,8 @@ local h="%F{#FFD700}%!${p}"
 local r="%F{245}%#${p}"
 #local v="\${vcs_info_msg_0_}${p}"
 #export PS1="${n}:${m} ${d}${v}"$'\n'"(${x}:${r})-%f "
-export PS1="${n}:${m} ${d} (${x}) ${r}%f "
+#export PS1="${n}:${m} ${d} (${x}) ${r}%f "
+export PS1="${n} ${d} (${x}) ${r}%f "
 
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
@@ -36,14 +37,14 @@ export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/wonkyoc/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/wonkyoc/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/wonkyoc/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/wonkyoc/miniforge3/etc/profile.d/conda.sh"
+    if [ -f "/Users/wonkyoc/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/wonkyoc/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/wonkyoc/miniforge3/bin:$PATH"
+        export PATH="/Users/wonkyoc/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -51,5 +52,5 @@ unset __conda_setup
 
 
 export PATH="$HOME/.poetry/bin:$PATH"
-
 alias ls='ls --color=auto -lh'
+export OPENAI_API_KEY="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"
