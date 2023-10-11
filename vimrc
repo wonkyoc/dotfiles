@@ -47,9 +47,10 @@ elseif &t_Co < 256
     colorscheme default
 else
     set termguicolors
-    set background=dark
+    "set background=white
     set t_Co=256
-    colorscheme gruvbox
+    "colorscheme base16-da-one-white
+    colorscheme badwolf
 endif
 
 
