@@ -20,7 +20,3 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 fi
 
 source ~/.bashrc
-
-. "$HOME/.cargo/env"
-
-export PATH="$HOME/.poetry/bin:$PATH"
