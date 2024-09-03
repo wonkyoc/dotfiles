@@ -12,7 +12,7 @@ endif
 call plug#begin('~/.vim/plugged')
 " Colorscheme
 " syntax support
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 "Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'                " YAML support
 "Plug 'ycm-core/YouCompleteMe' later
@@ -21,10 +21,10 @@ Plug 'stephpy/vim-yaml'                " YAML support
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-
+Plug 'preservim/nerdtree'
 
 " Cleanup?
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 "Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'rhysd/committia.vim'
 
@@ -38,7 +38,6 @@ Plug 'tinted-theming/base16-vim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
-
 
 " Colorscheme
 if has('gui_running')
