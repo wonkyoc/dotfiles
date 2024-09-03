@@ -20,6 +20,8 @@ Plug 'stephpy/vim-yaml'                " YAML support
 " productivity
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+
 
 " Cleanup?
 Plug 'vim-airline/vim-airline'
