@@ -22,6 +22,8 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
+Plug 'dhruvasagar/vim-table-mode'
+
 
 " Cleanup?
 "Plug 'vim-airline/vim-airline'

@@ -16,7 +16,7 @@
 export TERM=xterm-256color
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
+    tmux attach -t 0 || tmux new -s 0
 fi
 
 source ~/.bashrc
