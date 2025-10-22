@@ -23,7 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
-
+Plug 'github/copilot.vim'
 
 " Cleanup?
 "Plug 'vim-airline/vim-airline'
@@ -50,10 +50,10 @@ elseif &t_Co < 256
     colorscheme default
 else
     set termguicolors
-    "set background=white
-    set t_Co=256
+    set background=dark
+    "set t_Co=256
     "colorscheme base16-da-one-white
-    colorscheme badwolf
+    colorscheme PaperColor
 endif
 
 
@@ -61,7 +61,7 @@ endif
 set number              " line numbering
 set relativenumber      " show relative numbering
 set showcmd             " show command in bottom bar
-"set cursorline          " highlight current line
+set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
 filetype plugin on      " load filetype specific plugin files
 set wildmenu            " visual autocomplete for command menu
@@ -90,6 +90,47 @@ set softtabstop=4
 "set autoindent
 "set smartindent
 "set cindent
+
+" Highlighting
+" (Only matches inside comment regions via containedin=.*Comment)
+if exists('g:loaded_my_tagged_comments')
+  finish
+endif
+let g:loaded_my_tagged_comments = 1
+
+if has('termguicolors')
+  set termguicolors
+endif
+
+function! s:DefineTaggedComments() abort
+  " Whole-line variants (tag + rest of the line)
+  syntax match TagWC      /\vWC:\s*.*$/      contained containedin=.*Comment keepend
+  syntax match TagTODO    /\vTODO:\s*.*$/    contained containedin=.*Comment keepend
+  syntax match TagFIXME   /\vFIXME:\s*.*$/   contained containedin=.*Comment keepend
+  syntax match TagNOTE    /\vNOTE:\s*.*$/    contained containedin=.*Comment keepend
+  syntax match TagHACK    /\vHACK:\s*.*$/    contained containedin=.*Comment keepend
+  syntax match TagBUG     /\vBUG:\s*.*$/     contained containedin=.*Comment keepend
+  syntax match TagPERF    /\vPERF:\s*.*$/    contained containedin=.*Comment keepend
+  syntax match TagQ       /\vQ:\s*.*$/       contained containedin=.*Comment keepend
+
+  " Default colors (used if no per-filetype override is set)
+  highlight default TagWC    cterm=bold ctermfg=White ctermbg=DarkBlue   gui=bold guifg=#ffffff guibg=#1e40ff
+  highlight default TagTODO  cterm=bold ctermfg=Black ctermbg=Yellow     gui=bold guifg=#000000 guibg=#ffd400
+  highlight default TagFIXME cterm=bold ctermfg=White ctermbg=DarkRed    gui=bold guifg=#ffffff guibg=#b91c1c
+  highlight default TagNOTE  cterm=NONE ctermfg=Black ctermbg=LightCyan  gui=NONE guifg=#000000 guibg=#a7f3d0
+  highlight default TagHACK  cterm=NONE ctermfg=White ctermbg=DarkMagenta gui=NONE guifg=#ffffff guibg=#7e22ce
+  highlight default TagBUG   cterm=bold ctermfg=White ctermbg=DarkRed    gui=bold guifg=#ffffff guibg=#991b1b
+  highlight default TagPERF  cterm=bold ctermfg=Black ctermbg=LightGreen gui=bold guifg=#000000 guibg=#86efac
+  highlight default TagQ     cterm=bold ctermfg=Black ctermbg=LightBlue  gui=bold guifg=#000000 guibg=#93c5fd
+endfunction
+
+augroup MyTaggedComments
+  autocmd!
+  autocmd Syntax * call s:DefineTaggedComments()
+augroup END
+
+
+
 
 " Searching
 set incsearch           " search as characters are entered
@@ -136,3 +177,4 @@ nnoremap <leader>/ :Lines<CR>
 " Useful vimrc link
 " https://github.com/anishathalye/dotfiles/blob/master/vimrc
 " https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
+
