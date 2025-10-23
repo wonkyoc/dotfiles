@@ -31,10 +31,7 @@ Plug 'github/copilot.vim'
 Plug 'rhysd/committia.vim'
 
 " Colorscheme
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
-Plug 'tinted-theming/base16-vim'
 
 " Autocomplete
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -53,7 +50,7 @@ else
     set background=dark
     "set t_Co=256
     "colorscheme base16-da-one-white
-    colorscheme PaperColor
+    colorscheme gruvbox
 endif
 
 
