@@ -1,0 +1,10 @@
+# source (relative to repo)   target (relative to $HOME)
+gitconfig         .gitconfig
+gitignore_global  .gitignore
+vimrc             .vimrc
+vim               .vim
+zshrc             .zshrc
+tmux.conf         .tmux.conf
+bash_profile      .bash_profile
+bashrc            .bashrc
+bash              .bash

@@ -20,3 +20,6 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 fi
 
 source ~/.bashrc
+. "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

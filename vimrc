@@ -23,7 +23,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'github/copilot.vim'
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plug 'terrastruct/d2-vim'
 
 " Cleanup?
 "Plug 'vim-airline/vim-airline'
@@ -46,11 +47,10 @@ if has('gui_running')
 elseif &t_Co < 256
     colorscheme default
 else
-    set termguicolors
     set background=dark
-    "set t_Co=256
-    "colorscheme base16-da-one-white
+    set t_Co=256
     colorscheme gruvbox
+    let g:gruvbox_contrast_dark = 'hard' " This makes colors more vibrant
 endif
 
 
