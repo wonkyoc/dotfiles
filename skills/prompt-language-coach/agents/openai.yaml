@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Language Coach"
+  short_description: "Correct my English, track word history and recurring mistakes"
+  default_prompt: "Use $prompt-language-coach to correct my wording while preserving my intended meaning, log it, and flag recurring patterns."

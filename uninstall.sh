@@ -3,6 +3,7 @@
 # symlink pointing into this repo; real files and foreign links are left alone.
 set -e
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SKILL_TARGETS=(.claude/skills .agents/skills)
 
 unlink_if_ours() {
   local dst="$HOME/$1"
@@ -18,7 +19,9 @@ grep -v '^\s*#' "$DIR/links" | while read -r src dst; do
   [ -n "$dst" ] && unlink_if_ours "$dst"
 done
 
-echo "claude skills:"
-for s in "$DIR"/claude/skills/*/; do
-  unlink_if_ours ".claude/skills/$(basename "${s%/}")"
+for t in "${SKILL_TARGETS[@]}"; do
+  echo "skills in ~/$t:"
+  for s in "$DIR"/skills/*/; do
+    unlink_if_ours "$t/$(basename "${s%/}")"
+  done
 done

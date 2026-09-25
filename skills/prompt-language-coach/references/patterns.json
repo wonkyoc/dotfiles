@@ -1,0 +1,23 @@
+{
+  "_about": "Controlled pattern ids for prompt-language-coach. Every counted error gets exactly one id so repeats aggregate. 'category' is the usual category; preposition and verb-pattern errors can be either. Add a new id only when none fits, and give it a label and example.",
+  "article": {"category": "grammar", "label": "Missing or wrong article or determiner", "example": "use SOSP template -> use the SOSP template"},
+  "plural-number": {"category": "grammar", "label": "Singular/plural or countability", "example": "all skill -> all skills"},
+  "verb-form": {"category": "grammar", "label": "Wrong verb form after a modal, auxiliary, or passive", "example": "can be shorten -> can be shortened"},
+  "tense": {"category": "grammar", "label": "Tense or aspect", "example": "I send it yesterday -> I sent it yesterday"},
+  "agreement": {"category": "grammar", "label": "Subject-verb agreement", "example": "the figure show -> the figure shows"},
+  "question-order": {"category": "grammar", "label": "Question word order or missing auxiliary in a question", "example": "What would be the risk you think? -> What do you think the risk would be?"},
+  "omitted-word": {"category": "grammar", "label": "Missing subject, object, or verb", "example": "Would be any challenges? -> Would there be any challenges?"},
+  "word-class": {"category": "grammar", "label": "Wrong part of speech", "example": "technical challenging -> technical challenges"},
+  "sentence-boundary": {"category": "grammar", "label": "Run-on sentence, comma splice, or fragment", "example": "is using docs change the path -> is using docs; change the path"},
+  "negation-coordination": {"category": "grammar", "label": "not/nor/neither/or coordination", "example": "not a policy nor mechanism -> not a policy or a mechanism"},
+  "degree-modifier": {"category": "grammar", "label": "very/much/too with adjectives", "example": "not much hard -> not very hard"},
+  "number-date": {"category": "grammar", "label": "Ordinals, dates, and numerals", "example": "Oct 21th -> October 21st"},
+  "spelling": {"category": "grammar", "label": "Spelling or inflection typo", "example": "sandboxses -> sandboxes"},
+  "preposition": {"category": "either", "label": "Wrong or missing preposition", "example": "in the bottom -> at the bottom"},
+  "verb-pattern": {"category": "either", "label": "Verb complement pattern", "example": "asking about X to my friend -> asking my friend about X"},
+  "word-choice": {"category": "expression", "label": "Word with the wrong meaning", "example": "a comb with date -> combine the date"},
+  "fixed-expression": {"category": "expression", "label": "Idiom or standard phrase", "example": "I said wrong -> I misspoke"},
+  "unnatural-construction": {"category": "expression", "label": "Understandable but unnatural construction", "example": "memory can be reclaimable -> memory could be reclaimed"},
+  "redundancy": {"category": "expression", "label": "Redundant words", "example": "as well also -> as well"},
+  "register": {"category": "expression", "label": "Tone or formality mismatch", "example": "gonna -> going to (formal text)"}
+}

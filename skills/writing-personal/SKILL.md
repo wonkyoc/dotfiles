@@ -1,17 +1,31 @@
 ---
 name: writing-personal
-description: Wonkyo's personal writing profile — recurring habits with specimens from real drafts, fixes, and self-checks. Load together with writing.md whenever drafting, editing, or reviewing prose. Claude appends dated entries as new patterns appear and corrects violations without softening.
+description: Wonkyo's personal writing profile — recurring habits with specimens from real drafts, fixes, and self-checks. Load together with academic-writing whenever drafting, editing, or reviewing prose. The assistant appends dated entries as new patterns appear and corrects violations without softening.
 ---
 
 # Personal writing profile
 
-Standing agreement (2026-07-24): Claude maintains this file with specimens quoted from real
+Standing agreement (2026-07-24): the assistant (Claude or ChatGPT) maintains this file with specimens quoted from real
 drafts, and corrects these patterns anytime they appear — in drafts, notes, or chat — without
 softening. Reread §1–§3 before every drafting session; run the self-checks on each finished
 paragraph. Mastered entries get struck through, never deleted, so progress stays visible.
 
 Entry shape, used throughout: quoted specimen → `Rule:` (what to do instead) → `Self-check:`
 (a mechanical test, where one exists).
+
+## 0 The governing rule: clarity and simplicity (2026-09-08, author ruling)
+
+Clarity and simplicity outrank every other rule in this file, and they bind BOTH sides: the
+author's prose and the assistant's replies. When a rule below would produce a sentence that is
+technically precise but hard to read, clarity wins.
+
+- In the paper: the plainest technically correct wording. If two sentences say one thing, one
+  of them goes. A sentence a reviewer must re-read is a defect even when it is correct.
+- In the assistant's reviews: quote the sentence, then say what is wrong in ordinary words. Never let
+  a section number of this file stand in as the explanation ("§1.3", "collocation") — the
+  author cannot act on a pointer. Lead with the few findings that change the paper.
+- This is the positive form of §4's coined-vocabulary ban: that rule lists what not to write,
+  this one says what to aim for.
 
 **Honest current assessment.** Your structural instincts are already above average: enumerated
 rationales, honest concessions, placeholder discipline (`\rn{}` instead of invented citations),
@@ -72,7 +86,9 @@ is an adjective, the sentence is unfinished.
 | the ingest step costs around 68\% of the total pulling time | **accounts for** ~68\% of the pull time — *cost* takes a resource (time, bytes), not a share; a share is *accounted for* |
 | we can call it as dataplane | call it **a data plane** — *call X Y* takes no *as* (same family: *name, consider, deem*) |
 | dataplane is normally referred per-node | is normally **referred to as** per-node / normally **refers to** per-node components — *refer* needs its particles both directions |
-| in between different services; in between introduction and… | **between** — *in between* is only an adverb ("caught in between"); as a preposition, bare *between* |
+| in between different services; in between introduction and… | **between** — *in between* is only an adverb ("caught in between"); as a preposition, bare *between* (third occurrence 2026-08-28: "fills a gap in between layers") |
+| the sum of two flows does not **overflow the DRAM bandwidth** | does not **saturate** / **exceed** DRAM bandwidth — buffers and queues overflow; a rate is saturated or exceeded (survived the flag once: recheck flagged WORDS on revision, §1.9) |
+| "the sum of their **bytes** is an order of magnitude below the **bandwidth**" | the sum of their **rates** — bytes (GB) cannot be compared to a bandwidth (GB/s); same family as the "lower bound, 16 GB/s" row: name the quantity that actually carries the claim |
 
 Rule: the pair is memorized, not derived — verify the preposition instead of inferring it from
 the Korean case marking. Every new miss gets a row here; collocation errors read as non-native
@@ -89,7 +105,7 @@ and *which*.
   unrelated thought.
 
 Rule: *where* only for places/situations; *which* must sit directly after its noun. Deeper fix:
-don't repair the connector — cut the chain. One idea per sentence (writing.md, Voice and
+don't repair the connector — cut the chain. One idea per sentence (academic-writing, Voice and
 length).
 Self-check: if a sentence has two *which/where* clauses, it is two or three sentences.
 
@@ -314,7 +330,7 @@ answer is "it will exist later," the number is `\rn{}` today.
   transport-bound. The absolute dies to the evidence; the bound is proven by it.
 
 Rule: an absolute dies to one counterexample; the precise version survives review and usually
-reads *stronger* because it shows you know the boundary (writing.md, Writing a design
+reads *stronger* because it shows you know the boundary (academic-writing, Writing a design
 principle).
 
 ### 2.4 Define before use
@@ -351,7 +367,7 @@ information flow, not link words:
   announces a topic reset, and the reader expects one. Your instinct to use titles for
   reference-style design detail (format / correctness / comparison) is right, not a crutch.
 - **Untitled paragraphs** link old-info-first: open with the key noun from the previous
-  paragraph's end, close on the new idea (writing.md, Cohesion; Gopen & Swan).
+  paragraph's end, close on the new idea (academic-writing, Cohesion; Gopen & Swan).
 
 Rule: connectives are the weakest device — they assert a relation instead of building one.
 Self-check: delete the connective; if the relation is still clear, it was noise.
@@ -515,6 +531,63 @@ decision. If it only re-explains the mechanism, delete it; the design section ow
 Self-check: cover the result sentence and read the follow-up alone. If it is a sentence
 the design section could have contained verbatim, it is a restatement, not analysis.
 
+### 1.20 Negative polarity: "as well" flips to "either" (added 2026-08-28)
+- "DRAM bandwidth is not a major bottleneck **as well**." (§2.4 contention) — *as well* and
+  *too* live only in affirmative clauses; under negation English switches to **either**:
+  "is not a bottleneck **either**." Korean 도 covers both polarities with one particle, so
+  the split is invisible from the L1 side.
+
+Rule: additive adverbs are polarity-paired — too/as well (affirmative) vs either
+(negative); *neither/nor* when the addition itself is negative.
+Self-check: does the clause contain *not/never/no*? Then *as well* and *too* are wrong.
+
+### 2.14 Deltas are lifted from the map, not recalled from memory (added 2026-08-27)
+The first drafted pass of 07_related assigned mechanism labels from recall, and four failed
+the cross-check while correct one-liners sat unused in related-map.md:
+- "Sirius temporally handovers -- still sharing -- a memory resource in fine granularity
+  (e.g., kernel-level)" — the abstract says SIRIUS enables **spatial** sharing (the bib
+  keyword is literally `spatial_partition`) and reclaims training memory at
+  batch/gradient granularity in milliseconds; *temporal* and *kernel-level* are both
+  invented.
+- PipeSwitch filed under "autoscaling upon burst request rates" — PipeSwitch IS the
+  fast-switching paper (pipelined context switching, ms-scale, OSDI 20); it anchors the
+  clause it was moved out of.
+- ServerlessLLM cited under "fast efficient networks (RDMA and multicast) to transfer
+  models" — its mechanism is the opposite: multi-tier LOCAL checkpoint storage plus
+  locality-aware scheduling, designed to avoid the network transfer.
+- "Recent work adapts **concurrent** checkpointing" over the CheckFreq/Gemini/UCP group —
+  *concurrent* checkpointing is PCcheck's mechanism, demoted two days earlier for being
+  on the wrong axis; the group's shared mechanism is **asynchronous** checkpointing.
+
+Rule: when a sentence characterizes a cited paper, its mechanism words come from that
+paper's map row or reading note — never from memory. An invented mechanism label is
+§2.2's invented number wearing prose clothes, and the likeliest reviewer of a related-work
+paragraph is an author of the mischaracterized paper.
+Self-check: for each cited system, point at the map row (or the abstract in the bib) that
+contains the verb you used. No row → open the abstract before writing the sentence.
+
+### 2.15 Revision happens on the skeleton, not in the prose (added 2026-08-28)
+Self-diagnosis, verbatim (intro-reframe session): "once I finished a draft, it is very
+difficult for me to restruct or revise the contents. This is simply because 1) my writing
+skill is not sufficient to do it fast; 2) my logical thought lacks skills to reframe or
+revise it."
+
+The diagnosis mislocates the problem. Revising inside finished prose is hard for
+*everyone*: cohesion ties (old-info-first links, threaded subjects, §2.7's information
+flow) are exactly what resist moving — a well-written paragraph is glued to its
+neighbors by design. Sentence-level English speed is not the bottleneck; altitude is.
+Structure is invisible at the sentence level and obvious ten lines above it.
+
+Rule: to revise a drafted section, first extract its reverse outline — one line per
+paragraph stating the paragraph's JOB (the claim it advances, not its topic). Restructure
+at that altitude: reorder, merge, delete, insert jobs, and get the outline ruled before
+touching prose. Then rewrite only the paragraphs whose job changed; a paragraph whose
+job survived moves verbatim, glue repaired at its seams.
+Self-check: are you editing sentences before the outline is settled? Stop — you are
+polishing a wall that may move. (Section-level twin of §2.12: there, decide the
+paragraph's claim before sentence 1; here, decide the section's paragraph-jobs before
+paragraph 1.)
+
 ## 3 Numbers in prose
 Sourcing is §2.2; this section is presentation.
 - Name the baseline of every percentage. (Your own margin note on the 39% claim caught exactly
@@ -542,7 +615,20 @@ Sourcing is §2.2; this section is presentation.
 ## 4 Vocabulary
 - Overused: *leverage* (→ use / exploit / build on), *utilize* (→ use).
 - Prefer the systems verbs that carry precise meaning: incur, amortize, saturate, arbitrate,
-  stage, materialize, defer, elide, broker, gate.
+  stage, materialize, defer, elide, broker. (*gate* was on this list until 2026-09-07; the
+  author banned it — see the coined-vocabulary rule below.)
+- **Coined vocabulary is banned, including mine** (added 2026-09-07, author ruling). A word is
+  coined when the paper gives it a load-bearing meaning that no reader brings from outside and
+  the paper never defines: *gate* (verb), *delivered rate*, *governor* for a component that
+  already has a name, *slack* stretched over two different quantities,
+  *harvestable capacity*, *generation boundary*, *transfer plane*, *gap profile*, *parameter
+  skeleton*, *full-residency staging*. The register-metaphor family (§1.6) is the same defect
+  one step milder: *prices*, *dissolves*, *steals*, *lever*, *knob*.
+  Rule: use the plainest technically correct word, or define the term at first use and keep one
+  meaning for it. A term that needs a footnote to separate it from its own other use (the
+  paper's two *ownership invariants*) is two terms wearing one name — rename one.
+  Self-check: could a competent systems reader who has not read this paper say what the word
+  means? No → either define it in the same sentence or replace it with the ordinary word.
 - Adverb default: delete. If an adverb survives ("asynchronously", "concurrently"), it should be
   load-bearing, not decorative.
 - Hedge verbs (*may, might, could*) only for genuine uncertainty — never as politeness. "This
@@ -562,12 +648,15 @@ Sourcing is §2.2; this section is presentation.
   | "permissible buffer" (proposed term) | *permissible* = an allowed **action**; a buffer cannot be permissible. Same trap as *privileged buffer* (= a buffer **holding** privilege, cf. privileged mode). The concept was a **grant** |
   | "an ownership gate (isolation, asterisk mark (*))" | "(\*; isolation)" — the symbol names itself; *asterisk mark* is doubled twice over (*asterisk* = the mark, and the glyph is right there). Match the caption's existing parallel form "(③; contention)" |
   | "the wall is not in the **sole** data movement" | not in data movement **alone** / not **solely** in data movement — *sole* is an attributive adjective ("the sole survivor" = the only one); the intended meaning needs the adverb (*solely*) or postposed *alone*. The same sentence also dropped *but*: "not X, rather Y" → "not X **but rather** Y" |
-  | "the worst pull time **among others**" | the worst pull time **of the three** / worst overall — *among others* means "and more besides" (inter alia), not "compared with the others" |
+  | "the worst pull time **among others**" | the worst pull time **of the three** / worst overall — *among others* means "and more besides" (inter alia), not "compared with the others". Root cause (clicked 2026-09-02): bare *others* is indefinite, so it points at unnamed extras outside the list, never back at the named ones; *among the others* would compare, but a superlative over a closed set idiomatically takes *of* (*worst of the three*, *largest of the four*) |
   | "This **puts** the strict ordering **at first**" | **ranks** strict ordering **first** — *at first* means "initially" (temporal), not rank; *put first* without *at* is the ranking idiom |
   | "**popularly adopted** in the checkpoint domain" | **widely** adopted / well established — *popularly* = among the general public, not "commonly in the literature" |
   | "which I actually **learned new** now" | which **is new to me** / which I **just learned** — *learn* takes the thing learned, not the adjective *new* |
   | "DRAM BW is quite **fast**" | DRAM bandwidth is **high** — same family as *wide bandwidth*: rates are high/low, transfers are fast/slow; and *quite* hedges a checkable fact (state the margin instead) |
   | "I am **pinning a problem in** PCIe / NIC BW" | **pinpointing** the bottleneck **at** the NIC/PCIe path — *pin* alone means fasten; the locating verb is *pinpoint* |
+  | "Sirius temporally **handovers** a memory resource" | **hands over** — *handover* is a noun only; the verb is the two-word *hand over* (same family as *speed-up*/*speed up*, §1.15) |
+  | "**Another half** of handover is incoming traffic" | **The other half** — a whole has exactly two halves, so the second is definite; *another* implies more remain |
+  | "**The primary workflow of them** is that…" | **Their** primary workflow / the common pattern among them — English possessives front the pronoun; *of them* after an abstract noun reads as translated |
 
 ## 5 Punctuation mechanics
 - Semicolon: joins two complete sentences whose parallel or contrast is the point. Your actual
@@ -675,3 +764,42 @@ Sourcing is §2.2; this section is presentation.
   discipline — the discipline the paper explicitly keeps — instead of the
   durability-anchored release point plus data-independent stages; §2.1 family (cause
   attached to the nearest big concept, not the operative one).
+- 2026-08-27 — first drafted pass of 07_related (R1–R3): new §2.14 (deltas lifted from
+  the map, not recalled — four mechanism labels failed the paper cross-check: SIRIUS
+  spatial-not-temporal with invented "kernel-level", PipeSwitch as autoscaling,
+  ServerlessLLM as network-transfer, "concurrent checkpointing" over the async lineage),
+  a §2.10 recurrence ("the TEE line" — a scaffold cluster label — absorbed into prose),
+  and three near-miss rows (*temporally handovers*, *another half*, *the primary
+  workflow of them*). Inline recurrences, no new entries: compound-subject agreement
+  ("The closest work is Sirius and Weave"), dropped articles, "at container-level".
+- 2026-08-28 — 07_related revision pass: most 08-27 flags fixed (SIRIUS spatial, async
+  checkpointing, ServerlessLLM off the network clause, capability taxonomy, "the other
+  half", possessives). Two survived a direct flag across the revision — "kernel-level"
+  (the fix corrected *spatial* but kept the invented granularity: §1.9's partial-fix
+  mode) and "TEE line" in prose (§2.10, second occurrence). Lesson appended to §1.9's
+  family: when a flagged sentence is revised, re-check the SPECIFIC flagged words, not
+  just the sentence — a fix that addresses the clause can still carry the flagged token.
+- 2026-08-28 (later) — added §2.15 (revision happens on the skeleton, not in the prose)
+  from the intro-reframe session: the author's self-diagnosis blamed writing speed and
+  reframing skill; the actual gap was working at sentence altitude during structural
+  revision. Method installed: reverse outline → restructure jobs → rewrite only changed
+  paragraphs.
+- 2026-09-02 — the author applied the "among others" fix (S5.4) and asked why the
+  original fails; the missing piece was the article, now recorded in the §4 row: bare
+  *others* is indefinite and points outside the list, *the others* would compare, and a
+  closed-set superlative takes *of*. Fix applied and CD note removed by the author.
+- 2026-09-07 — full-manuscript clarity sweep (author: "technical jargons coined by you are
+  prohibited; use simple but technically correct vocab"). §4 gains the coined-vocabulary rule
+  and drops *gate* from the recommended systems verbs. Root cause on my side: the precision-verb
+  list licensed vividness, and vividness slid into private terminology (*governor*, *slack*,
+  *harvestable*, *delivered rate*) that carries argument weight in S3.5/S5.4 while
+  being undefined. Author ruling stands over the old list.
+- 2026-09-07 (close) — the sweep converged after three author passes. *forfeit* KEPT by author
+  ruling and removed from the banned list above; everything else went. Two lessons for me, not
+  the author: (1) the replacement must be a word the paper already owns — *slack* → *the boot*
+  worked because $T_{\text{BOOT}}$ exists, while my earlier *idle windows* substitution silently
+  inverted the principle (the image goes first because the boot waits on it, not because of idle
+  windows); (2) hints written as description get pasted as prose (§2.10) — "the boot gives the
+  model N seconds of room" landed in the draft with a literal undefined $N$. Write hints in a
+  form that breaks if pasted, or give the finished plain phrase.
+- 2026-09-08 — added §0 (clarity and simplicity is the governing rule, binding on Claude's reviews as well as the drafts), from the full-manuscript review pass: the findings were correct but delivered in review shorthand the author could not act on without a follow-up question.

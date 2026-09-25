@@ -1,0 +1,262 @@
+/*
+ * OpenAI-style markdown theme
+ * Editorial restraint: white ground, near-black type, narrow measure,
+ * medium-weight headings with tight tracking, almost no chroma.
+ *
+ * OpenAI Sans is proprietary and not publicly distributed; Inter is the
+ * documented substitute, with the macOS system grotesque as fallback.
+ *
+ * Works in both VSCode's built-in markdown preview (matches `body`) and
+ * Markdown Preview Enhanced (matches `.markdown-preview`). The doubled
+ * class in :is() carries enough specificity to beat MPE's base sheet.
+ */
+
+:root {
+  --oai-font-sans: "OpenAI Sans", "Inter", "Inter var", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --oai-font-mono: "JetBrains Mono", "Berkeley Mono", ui-monospace, SFMono-Regular,
+    "SF Mono", Menlo, Consolas, monospace;
+
+  --oai-bg: #ffffff;
+  --oai-text: #0d0d0d;
+  --oai-text-muted: #5d5d5d;
+  --oai-text-faint: #8f8f8f;
+  --oai-border: #e5e5e5;
+  --oai-border-strong: #d9d9d9;
+  --oai-surface: #f7f7f7;
+  --oai-accent: #0d0d0d;
+
+  --oai-measure: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --oai-bg: #0d0d0d;
+    --oai-text: #ececec;
+    --oai-text-muted: #afafaf;
+    --oai-text-faint: #7d7d7d;
+    --oai-border: #2f2f2f;
+    --oai-border-strong: #3f3f3f;
+    --oai-surface: #171717;
+    --oai-accent: #ececec;
+  }
+}
+
+/* VSCode stamps these on the preview body regardless of OS setting. */
+body.vscode-light { --oai-bg: #ffffff; --oai-text: #0d0d0d; --oai-text-muted: #5d5d5d; --oai-text-faint: #8f8f8f; --oai-border: #e5e5e5; --oai-border-strong: #d9d9d9; --oai-surface: #f7f7f7; --oai-accent: #0d0d0d; }
+body.vscode-dark,
+body.vscode-high-contrast { --oai-bg: #0d0d0d; --oai-text: #ececec; --oai-text-muted: #afafaf; --oai-text-faint: #7d7d7d; --oai-border: #2f2f2f; --oai-border-strong: #3f3f3f; --oai-surface: #171717; --oai-accent: #ececec; }
+
+:is(body, .markdown-preview.markdown-preview) {
+  font-family: var(--oai-font-sans);
+  font-size: 16.5px;
+  line-height: 1.65;
+  letter-spacing: -0.011em;
+  font-weight: 400;
+  color: var(--oai-text);
+  background-color: var(--oai-bg);
+  max-width: var(--oai-measure);
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 12rem;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ---- headings ---------------------------------------------------------- */
+
+:is(body, .markdown-preview.markdown-preview) :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--oai-font-sans);
+  color: var(--oai-text);
+  letter-spacing: -0.022em;
+  line-height: 1.22;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+:is(body, .markdown-preview.markdown-preview) h1 {
+  font-size: 2.3rem;
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.12;
+  margin: 0 0 1.6rem;
+}
+
+:is(body, .markdown-preview.markdown-preview) h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 3.4rem 0 1rem;
+}
+
+:is(body, .markdown-preview.markdown-preview) h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 2.4rem 0 0.75rem;
+}
+
+:is(body, .markdown-preview.markdown-preview) h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 2rem 0 0.6rem;
+}
+
+:is(body, .markdown-preview.markdown-preview) :is(h5, h6) {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--oai-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 1.8rem 0 0.5rem;
+}
+
+/* ---- body copy --------------------------------------------------------- */
+
+:is(body, .markdown-preview.markdown-preview) p {
+  margin: 0 0 1.35rem;
+}
+
+:is(body, .markdown-preview.markdown-preview) a {
+  color: var(--oai-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--oai-border-strong);
+  transition: text-decoration-color 0.12s ease, color 0.12s ease;
+}
+
+:is(body, .markdown-preview.markdown-preview) a:hover {
+  text-decoration-color: currentColor;
+}
+
+:is(body, .markdown-preview.markdown-preview) strong {
+  font-weight: 600;
+}
+
+:is(body, .markdown-preview.markdown-preview) em {
+  font-style: italic;
+}
+
+:is(body, .markdown-preview.markdown-preview) :is(ul, ol) {
+  margin: 0 0 1.35rem;
+  padding-left: 1.4rem;
+}
+
+:is(body, .markdown-preview.markdown-preview) li {
+  margin: 0.4rem 0;
+  padding-left: 0.25rem;
+}
+
+:is(body, .markdown-preview.markdown-preview) li::marker {
+  color: var(--oai-text-faint);
+}
+
+:is(body, .markdown-preview.markdown-preview) :is(ul, ol) :is(ul, ol) {
+  margin: 0.4rem 0 0.6rem;
+}
+
+/* ---- quotes, rules ----------------------------------------------------- */
+
+:is(body, .markdown-preview.markdown-preview) blockquote {
+  margin: 1.8rem 0;
+  padding: 0 0 0 1.4rem;
+  border-left: 2px solid var(--oai-border-strong);
+  background: none;
+  color: var(--oai-text-muted);
+  font-style: normal;
+}
+
+:is(body, .markdown-preview.markdown-preview) blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+:is(body, .markdown-preview.markdown-preview) hr {
+  border: none;
+  border-top: 1px solid var(--oai-border);
+  margin: 3.2rem 0;
+  height: 0;
+  background: none;
+}
+
+/* ---- code -------------------------------------------------------------- */
+
+:is(body, .markdown-preview.markdown-preview) code {
+  font-family: var(--oai-font-mono);
+  font-size: 0.855em;
+  letter-spacing: 0;
+  background-color: var(--oai-surface);
+  border: 1px solid var(--oai-border);
+  border-radius: 5px;
+  padding: 0.12em 0.36em;
+}
+
+:is(body, .markdown-preview.markdown-preview) pre {
+  background-color: var(--oai-surface);
+  border: 1px solid var(--oai-border);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin: 1.8rem 0;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+:is(body, .markdown-preview.markdown-preview) pre code {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 0.83rem;
+}
+
+/* ---- tables ------------------------------------------------------------ */
+
+:is(body, .markdown-preview.markdown-preview) table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.8rem 0;
+  font-size: 0.93rem;
+  display: table;
+}
+
+:is(body, .markdown-preview.markdown-preview) :is(th, td) {
+  border: none;
+  border-bottom: 1px solid var(--oai-border);
+  padding: 0.6rem 0.9rem 0.6rem 0;
+  text-align: left;
+  vertical-align: top;
+  background: none;
+}
+
+:is(body, .markdown-preview.markdown-preview) th {
+  font-weight: 600;
+  color: var(--oai-text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--oai-border-strong);
+}
+
+:is(body, .markdown-preview.markdown-preview) tr {
+  background: none;
+}
+
+/* ---- misc -------------------------------------------------------------- */
+
+:is(body, .markdown-preview.markdown-preview) img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1.8rem 0;
+}
+
+:is(body, .markdown-preview.markdown-preview) :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-top: 0;
+}
+
+:is(body, .markdown-preview.markdown-preview) kbd {
+  font-family: var(--oai-font-mono);
+  font-size: 0.8em;
+  background: var(--oai-surface);
+  border: 1px solid var(--oai-border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+}
