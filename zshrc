@@ -56,3 +56,6 @@ export PATH="/Library/TeX/texbin:$PATH"
 alias ls='ls --color=auto -lh'
 
 . "$HOME/.local/bin/env"
+
+source "${${(%):-%N}:A:h}/zsh/clean.zsh"
+export CLEAN_VARIANT=linen

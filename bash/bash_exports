@@ -1,4 +1,1 @@
 #!/usr/bin/env bash
-
-# bash_config
-export OPENAI_API_KEY="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"

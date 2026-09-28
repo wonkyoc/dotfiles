@@ -6,3 +6,5 @@ source ~/.bash/bash_aliases
 . "$HOME/.cargo/env"
 
 . "$HOME/.local/bin/env"
+
+[ -f ~/.bash/bash_prompt ] && . ~/.bash/bash_prompt

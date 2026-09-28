@@ -12,6 +12,7 @@ Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/committia.vim'
 Plug 'wonkyoc/vim-clean'
+Plug 'junegunn/fzf.vim'
 call plug#end()         " also turns on filetype plugin/indent and syntax
 
 " Colorscheme
@@ -23,7 +24,8 @@ if has('termguicolors')
   endif
   set termguicolors
 endif
-let g:clean_variant = 'paper'   " paper | linen | white, or :CleanVariant at runtime
+" paper | linen | white; shares $CLEAN_VARIANT with zsh/clean.zsh (:CleanVariant at runtime)
+let g:clean_variant = empty($CLEAN_VARIANT) ? 'paper' : $CLEAN_VARIANT
 silent! colorscheme clean
 
 " UI
