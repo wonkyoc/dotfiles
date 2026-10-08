@@ -1,6 +1,7 @@
 ---
 name: academic-writing
-description: Wonkyo's writing style and authorship rules for any project — brevity, information-flow cohesion, evidence discipline, the hyphen-chain ban, and the standing rule that the author writes the prose while the assistant scaffolds. Load this whenever drafting, editing, reviewing, or shortening any prose: papers, sections, abstracts, captions, design docs, README text, notes, commit messages, or replies. Use it even when the request looks like a small wording fix, and always load `writing-personal` alongside it.
+description: >-
+  Wonkyo's writing style and authorship rules for any project — brevity, information-flow cohesion, evidence discipline, the hyphen-chain ban, and the standing rule that the author writes the prose while the assistant scaffolds. Load this whenever drafting, editing, reviewing, or shortening any prose: papers, sections, abstracts, captions, design docs, README text, notes, commit messages, or replies. Use it even when the request looks like a small wording fix, and always load `writing-personal` alongside it.
 ---
 
 # Writing style (portable)
@@ -38,6 +39,9 @@ This skill is project-independent. A repo that uses it may pin the following in 
 
 - Be brief. Cut hedges, throat-clearing, and restated context.
 - Prefer short sentences over long ones; one idea per sentence.
+- Across all projects, default to concise documents, not exhaustive explanations. Include only what the reader needs to understand, decide or act; expand when requested or required for correctness.
+- Keep READMEs focused on purpose, essential commands and prerequisites. Link to canonical protocols, design details and execution history instead of repeating them. Preserve safety constraints and evidence limitations.
+- Before finishing, remove repeated points, unnecessary background and summaries that restate the document. Brevity must not turn clear sentences into jargon or fragments.
 
 ## 3. Structure
 

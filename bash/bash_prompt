@@ -53,7 +53,7 @@ _clean_prompt() {
   _clean_git_out=''
   _clean_git
   [ -n "$SSH_CONNECTION" ] && host="${dim}\u@\h${r} "
-  [ -n "$VIRTUAL_ENV" ] && venv="  \[\e[$(_clean_sgr 38 type)m\]${VIRTUAL_ENV##*/}${r}"
+  [ -n "$VIRTUAL_ENV" ] && venv="  \[\e[$(_clean_sgr 38 type)m\]${VIRTUAL_ENV_PROMPT:-${VIRTUAL_ENV##*/}}${r}"
   [ "$EUID" = 0 ] && mark='#' || mark='›'
   if [ "$status" = 0 ]; then mark="${muted}${mark}${r}"; else mark="${err}${status} ${mark}${r}"; fi
   # window title, blank line, [user@host] path branch venv, then the mark

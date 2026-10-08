@@ -68,3 +68,4 @@ augroup END
 set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp949,korea,iso-2022-kr
 set backspace=indent,eol,start
 set modeline
+let g:go_version_warning = 0
